@@ -12,9 +12,13 @@ namespace ShopGames
 {
     public partial class PersForm : Form
     {
-        public PersForm()
+        public PersForm(string name)
         {
             InitializeComponent();
+
+            Text = name;
+            NameLabel.Text = name;
+            PersPictureBox.Load("../../Pictures/" + name + ".jpg");
         }
     }
 }

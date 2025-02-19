@@ -49,6 +49,7 @@
             this.PersPictureBox.Location = new System.Drawing.Point(36, 79);
             this.PersPictureBox.Name = "PersPictureBox";
             this.PersPictureBox.Size = new System.Drawing.Size(379, 466);
+            this.PersPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PersPictureBox.TabIndex = 1;
             this.PersPictureBox.TabStop = false;
             // 
