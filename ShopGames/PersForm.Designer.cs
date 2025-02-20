@@ -32,6 +32,7 @@
             this.PersPictureBox = new System.Windows.Forms.PictureBox();
             this.StyleLabel = new System.Windows.Forms.Label();
             this.DeskTextBox = new System.Windows.Forms.TextBox();
+            this.PriceLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PersPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,11 +71,21 @@
             this.DeskTextBox.Size = new System.Drawing.Size(395, 465);
             this.DeskTextBox.TabIndex = 3;
             // 
+            // PriceLabel
+            // 
+            this.PriceLabel.AutoSize = true;
+            this.PriceLabel.Location = new System.Drawing.Point(467, 583);
+            this.PriceLabel.Name = "PriceLabel";
+            this.PriceLabel.Size = new System.Drawing.Size(64, 25);
+            this.PriceLabel.TabIndex = 4;
+            this.PriceLabel.Text = "label1";
+            // 
             // PersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 646);
+            this.Controls.Add(this.PriceLabel);
             this.Controls.Add(this.DeskTextBox);
             this.Controls.Add(this.StyleLabel);
             this.Controls.Add(this.PersPictureBox);
@@ -95,5 +106,6 @@
         private System.Windows.Forms.PictureBox PersPictureBox;
         private System.Windows.Forms.Label StyleLabel;
         private System.Windows.Forms.TextBox DeskTextBox;
+        private System.Windows.Forms.Label PriceLabel;
     }
 }

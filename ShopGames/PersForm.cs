@@ -12,13 +12,15 @@ namespace ShopGames
 {
     public partial class PersForm : Form
     {
-        public PersForm(string name)
+        public PersForm(Game game)
         {
             InitializeComponent();
 
-            Text = name;
-            NameLabel.Text = name;
-            PersPictureBox.Load("../../Pictures/" + name + ".jpg");
+            Text = game.name;
+            NameLabel.Text = "Название игры: " + game.name;
+            PersPictureBox.Image = game.pb.Image; 
+            StyleLabel.Text = "Жанр игры: " + game.style;
+            PriceLabel.Text = "Цена игры, руб. " + game.price;
         }
     }
 }

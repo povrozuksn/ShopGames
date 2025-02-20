@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopGames.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,12 @@ namespace ShopGames
             mode = _mode;
             price = _price;
             pb = new PictureBox();
-            pb.Load("../../Pictures/" + name + ".jpg");
+            try
+            {
+                pb.Load("../../Pictures/" + name + ".jpg");
+            }
+            catch (Exception) { }
+
             lbl = new Label();
             lbl.Text = name;
         }
@@ -36,18 +42,43 @@ namespace ShopGames
 
     public partial class MainForm : Form
     {
-        Game[] game_list = new Game[5];
+        Game[] game_list = new Game[6];
         public MainForm()
         {
             InitializeComponent();
             FiltrPanel.Height = HideButton.Height;
 
-            game_list[0] = new Game("Half-Life", "Шутер от первого лица", "однопользовательский", 200);
+            game_list[0] = new Game("Half-Life", "Шутер", "однопользовательский", 200);
             game_list[1] = new Game("Dota2", "Стратегия", "многопользовательский", 300);
-            game_list[2] = new Game("Mafia 2", "Приключение", "однопользовательский", 100);
-            game_list[3] = new Game("Assassin's Creed II", "Приключение", "однопользовательский", 400);
-            game_list[4] = new Game("S.T.A.L.K.E.R.: Call of Pripyat", "Ролевая игра", "однопользовательский", 500);
+            game_list[2] = new Game("Mafia 2", "Приключения", "однопользовательский", 100);
+            game_list[3] = new Game("Assassin's Creed II", "Приключения", "однопользовательский", 400);
+            game_list[4] = new Game("S.T.A.L.K.E.R. Call of Pripyat", "Ролевая игра", "однопользовательский", 500);
+            game_list[5] = new Game("Minecraft", "Песочница", "многопользовательский", 500);
 
+            int x = 30;
+            int y = 30;
+
+            for (int i = 0; i < 6; i++)
+            {
+                game_list[i].pb.Location = new Point(x, y);
+                game_list[i].pb.Size = new Size(250, 243);
+                game_list[i].pb.SizeMode = PictureBoxSizeMode.Zoom;
+                game_list[i].pb.Tag = game_list[i].name;
+                game_list[i].pb.Click += new EventHandler(picture_Click);
+                InfoPanel.Controls.Add(game_list[i].pb);
+
+                game_list[i].lbl.Location = new Point(x, y+260);
+                game_list[i].lbl.Size = new Size(250, 25);
+                game_list[i].lbl.TextAlign = ContentAlignment.MiddleCenter;
+                InfoPanel.Controls.Add(game_list[i].lbl);
+
+                x += 300;
+                if (x+250 > InfoPanel.Width)
+                {
+                    x = 30;
+                    y += 300;
+                }
+            }
         }
 
         private void HideButton_Click(object sender, EventArgs e)
@@ -66,9 +97,50 @@ namespace ShopGames
 
         private void picture_Click(object sender, EventArgs e)
         {
-            PictureBox pb = (PictureBox)sender;
-            PersForm persForm = new PersForm(pb.Tag.ToString());
-            persForm.ShowDialog();
+            for (int i=0; i<6; i++)
+            {
+                if(((PictureBox)sender).Tag == game_list[i].pb.Tag)
+                {
+                    PersForm persForm = new PersForm(game_list[i]);
+                    persForm.ShowDialog();
+                }                
+            }            
+        }
+
+        private void FindButton_Click(object sender, EventArgs e)
+        {
+            int x = 30;
+            int y = 30;
+
+            for (int i = 0; i < 6; i++)
+            {
+                game_list[i].pb.Visible = true;
+                game_list[i].lbl.Visible = true;
+
+                if(StyleComboBox.Text != "" && StyleComboBox.Text != game_list[i].style)
+                {
+                    game_list[i].pb.Visible = false;
+                    game_list[i].lbl.Visible = false;
+                }
+
+
+
+
+
+                if(game_list[i].pb.Visible)
+                {
+                    game_list[i].pb.Location = new Point(x, y);
+                    game_list[i].lbl.Location = new Point(x, y + 260);
+                    
+                    x += 300;
+                    if (x + 250 > InfoPanel.Width)
+                    {
+                        x = 30;
+                        y += 300;
+                    }
+                }
+            }
+
         }
     }
 }
