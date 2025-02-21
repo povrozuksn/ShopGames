@@ -42,23 +42,25 @@ namespace ShopGames
 
     public partial class MainForm : Form
     {
-        Game[] game_list = new Game[6];
+        List<Game> game_list = new List<Game>();
         public MainForm()
         {
             InitializeComponent();
             FiltrPanel.Height = HideButton.Height;
 
-            game_list[0] = new Game("Half-Life", "Шутер", "однопользовательский", 200);
-            game_list[1] = new Game("Dota2", "Стратегия", "многопользовательский", 300);
-            game_list[2] = new Game("Mafia 2", "Приключения", "однопользовательский", 100);
-            game_list[3] = new Game("Assassin's Creed II", "Приключения", "однопользовательский", 400);
-            game_list[4] = new Game("S.T.A.L.K.E.R. Call of Pripyat", "Ролевая игра", "однопользовательский", 500);
-            game_list[5] = new Game("Minecraft", "Песочница", "многопользовательский", 500);
+            game_list.Clear();
+            string[] strs = System.IO.File.ReadAllLines("games.txt");
+            foreach (string str in strs)
+            {
+                string[] parts = str.Split(new string[] {", "}, StringSplitOptions.None);
+                Game game = new Game(parts[0], parts[1], parts[2], Convert.ToInt32(parts[3]));
+                game_list.Add(game);
+            }
 
             int x = 30;
             int y = 30;
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < game_list.Count; i++)
             {
                 game_list[i].pb.Location = new Point(x, y);
                 game_list[i].pb.Size = new Size(250, 243);
@@ -97,7 +99,7 @@ namespace ShopGames
 
         private void picture_Click(object sender, EventArgs e)
         {
-            for (int i=0; i<6; i++)
+            for (int i=0; i<game_list.Count; i++)
             {
                 if(((PictureBox)sender).Tag == game_list[i].pb.Tag)
                 {
@@ -112,7 +114,7 @@ namespace ShopGames
             int x = 30;
             int y = 30;
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < game_list.Count; i++)
             {
                 game_list[i].pb.Visible = true;
                 game_list[i].lbl.Visible = true;
@@ -123,11 +125,26 @@ namespace ShopGames
                     game_list[i].lbl.Visible = false;
                 }
 
+                if (NameTextBox.Text != "" && !game_list[i].name.ToLower().Contains(NameTextBox.Text.ToLower()))
+                {
+                    game_list[i].pb.Visible = false;
+                    game_list[i].lbl.Visible = false;
+                }
+
+                if (ModeComboBox.Text != "" && ModeComboBox.Text != game_list[i].mode)
+                {
+                    game_list[i].pb.Visible = false;
+                    game_list[i].lbl.Visible = false;
+                }
+
+                if (PriceTextBox.Text != "" && Convert.ToInt32(PriceTextBox.Text) >= game_list[i].price)
+                {
+                    game_list[i].pb.Visible = false;
+                    game_list[i].lbl.Visible = false;
+                }
 
 
-
-
-                if(game_list[i].pb.Visible)
+                if (game_list[i].pb.Visible)
                 {
                     game_list[i].pb.Location = new Point(x, y);
                     game_list[i].lbl.Location = new Point(x, y + 260);
@@ -141,6 +158,19 @@ namespace ShopGames
                 }
             }
 
+        }
+
+        private void InfoPanel_Resize(object sender, EventArgs e)
+        {
+            FindButton_Click(null, null);
+        }
+
+        private void NameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                FindButton_Click(null, null);
+            }
         }
     }
 }
