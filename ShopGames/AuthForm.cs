@@ -12,9 +12,29 @@ namespace ShopGames
 {
     public partial class AuthForm : Form
     {
+        public static string name;
+        public static string family;
+
         public AuthForm()
         {
             InitializeComponent();
+        }
+
+        private void AuthButton_Click(object sender, EventArgs e)
+        {
+            string[] strs = System.IO.File.ReadAllLines("users.txt");
+            foreach (string str in strs)
+            {
+                string[] parts = str.Split(new string[] {", "}, StringSplitOptions.None);
+                if(AuthTextBox.Text == parts[2] && PasTextBox.Text == parts[3])
+                {
+                    name = parts[0];
+                    family = parts[1];
+                    Close();
+                    return;
+                }
+            }
+            MessageBox.Show("Указан неверный логин/пароль");
         }
     }
 }

@@ -16,5 +16,31 @@ namespace ShopGames
         {
             InitializeComponent();
         }
+
+        private void RegButton_Click(object sender, EventArgs e)
+        {
+            if(nameTextBox.Text!="" && familyTextBox.Text!="" && loginTextBox.Text!="" && passTextBox.Text!="")
+            {
+                if (passTextBox.Text == repassTextBox.Text)
+                {
+                    System.IO.File.AppendAllText("users.txt", nameTextBox.Text + ", " +
+                                                            familyTextBox.Text + ", " +
+                                                            loginTextBox.Text + ", " +
+                                                            passTextBox.Text +
+                                                            Environment.NewLine);
+                    MessageBox.Show("Регистрация прошла успешно");
+                    Close();
+                }
+                else 
+                {
+                    MessageBox.Show("Пароли не совпали");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Все поля формы обязательны для заполнения");
+            }
+            
+        }
     }
 }

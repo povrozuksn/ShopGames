@@ -50,6 +50,7 @@
             this.RegButton.TabIndex = 0;
             this.RegButton.Text = "Зерегистрироваться";
             this.RegButton.UseVisualStyleBackColor = true;
+            this.RegButton.Click += new System.EventHandler(this.RegButton_Click);
             // 
             // label1
             // 
@@ -103,6 +104,7 @@
             // 
             this.passTextBox.Location = new System.Drawing.Point(12, 317);
             this.passTextBox.Name = "passTextBox";
+            this.passTextBox.PasswordChar = '*';
             this.passTextBox.Size = new System.Drawing.Size(341, 30);
             this.passTextBox.TabIndex = 8;
             // 
@@ -119,6 +121,7 @@
             // 
             this.repassTextBox.Location = new System.Drawing.Point(12, 390);
             this.repassTextBox.Name = "repassTextBox";
+            this.repassTextBox.PasswordChar = '*';
             this.repassTextBox.Size = new System.Drawing.Size(341, 30);
             this.repassTextBox.TabIndex = 10;
             // 

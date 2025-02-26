@@ -44,6 +44,7 @@
             this.AuthButton.TabIndex = 0;
             this.AuthButton.Text = "Войти";
             this.AuthButton.UseVisualStyleBackColor = true;
+            this.AuthButton.Click += new System.EventHandler(this.AuthButton_Click);
             // 
             // label1
             // 

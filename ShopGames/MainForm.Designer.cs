@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.AuthPanel = new System.Windows.Forms.Panel();
+            this.RegButton = new System.Windows.Forms.Button();
             this.AuthButton = new System.Windows.Forms.Button();
             this.FiltrPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.HideButton = new System.Windows.Forms.Button();
             this.InfoPanel = new System.Windows.Forms.Panel();
-            this.RegButton = new System.Windows.Forms.Button();
             this.AuthPanel.SuspendLayout();
             this.FiltrPanel.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +58,16 @@
             this.AuthPanel.Size = new System.Drawing.Size(957, 87);
             this.AuthPanel.TabIndex = 0;
             // 
+            // RegButton
+            // 
+            this.RegButton.Location = new System.Drawing.Point(784, 21);
+            this.RegButton.Name = "RegButton";
+            this.RegButton.Size = new System.Drawing.Size(161, 36);
+            this.RegButton.TabIndex = 5;
+            this.RegButton.Text = "Регистрация";
+            this.RegButton.UseVisualStyleBackColor = true;
+            this.RegButton.Click += new System.EventHandler(this.RegButton_Click);
+            // 
             // AuthButton
             // 
             this.AuthButton.Location = new System.Drawing.Point(12, 21);
@@ -66,6 +76,7 @@
             this.AuthButton.TabIndex = 4;
             this.AuthButton.Text = "Войти";
             this.AuthButton.UseVisualStyleBackColor = true;
+            this.AuthButton.Click += new System.EventHandler(this.AuthButton_Click);
             // 
             // FiltrPanel
             // 
@@ -196,15 +207,6 @@
             this.InfoPanel.Size = new System.Drawing.Size(957, 370);
             this.InfoPanel.TabIndex = 2;
             this.InfoPanel.Resize += new System.EventHandler(this.InfoPanel_Resize);
-            // 
-            // RegButton
-            // 
-            this.RegButton.Location = new System.Drawing.Point(784, 21);
-            this.RegButton.Name = "RegButton";
-            this.RegButton.Size = new System.Drawing.Size(161, 36);
-            this.RegButton.TabIndex = 5;
-            this.RegButton.Text = "Регистрация";
-            this.RegButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

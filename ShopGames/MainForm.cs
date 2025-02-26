@@ -172,5 +172,17 @@ namespace ShopGames
                 FindButton_Click(null, null);
             }
         }
+
+        private void RegButton_Click(object sender, EventArgs e)
+        {
+            RegForm regForm = new RegForm();
+            regForm.ShowDialog();
+        }
+
+        private void AuthButton_Click(object sender, EventArgs e)
+        {
+            AuthForm authForm = new AuthForm();
+            authForm.ShowDialog();
+        }
     }
 }
