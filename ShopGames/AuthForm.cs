@@ -12,8 +12,10 @@ namespace ShopGames
 {
     public partial class AuthForm : Form
     {
-        public static string name;
-        public static string family;
+        public static string name = "";
+        public static string family = "";
+        public static string login = "";
+        public static bool isAdmin = false;
 
         public AuthForm()
         {
@@ -30,6 +32,8 @@ namespace ShopGames
                 {
                     name = parts[0];
                     family = parts[1];
+                    login = parts[2];
+                    isAdmin = (parts[4]=="1");
                     Close();
                     return;
                 }

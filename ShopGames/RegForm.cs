@@ -26,7 +26,7 @@ namespace ShopGames
                     System.IO.File.AppendAllText("users.txt", nameTextBox.Text + ", " +
                                                             familyTextBox.Text + ", " +
                                                             loginTextBox.Text + ", " +
-                                                            passTextBox.Text +
+                                                            passTextBox.Text + ", " + "0" +
                                                             Environment.NewLine);
                     MessageBox.Show("Регистрация прошла успешно");
                     Close();

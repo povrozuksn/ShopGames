@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.AuthPanel = new System.Windows.Forms.Panel();
             this.RegButton = new System.Windows.Forms.Button();
             this.AuthButton = new System.Windows.Forms.Button();
@@ -43,13 +44,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.HideButton = new System.Windows.Forms.Button();
             this.InfoPanel = new System.Windows.Forms.Panel();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AuthPanel.SuspendLayout();
             this.FiltrPanel.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AuthPanel
             // 
             this.AuthPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.AuthPanel.Controls.Add(this.NameLabel);
             this.AuthPanel.Controls.Add(this.RegButton);
             this.AuthPanel.Controls.Add(this.AuthButton);
             this.AuthPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -208,11 +214,36 @@
             this.InfoPanel.TabIndex = 2;
             this.InfoPanel.Resize += new System.EventHandler(this.InfoPanel_Resize);
             // 
+            // NameLabel
+            // 
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(189, 27);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(64, 25);
+            this.NameLabel.TabIndex = 6;
+            this.NameLabel.Text = "label1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 56);
+            // 
+            // AddToolStripMenuItem
+            // 
+            this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.AddToolStripMenuItem.Text = "Добавить объект";
+            this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(957, 580);
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.InfoPanel);
             this.Controls.Add(this.FiltrPanel);
             this.Controls.Add(this.AuthPanel);
@@ -221,8 +252,10 @@
             this.Name = "MainForm";
             this.Text = "Form1";
             this.AuthPanel.ResumeLayout(false);
+            this.AuthPanel.PerformLayout();
             this.FiltrPanel.ResumeLayout(false);
             this.FiltrPanel.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -244,6 +277,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox ModeComboBox;
         private System.Windows.Forms.Button RegButton;
+        private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem AddToolStripMenuItem;
     }
 }
 

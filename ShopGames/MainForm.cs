@@ -47,6 +47,7 @@ namespace ShopGames
         {
             InitializeComponent();
             FiltrPanel.Height = HideButton.Height;
+            NameLabel.Visible = false;
 
             game_list.Clear();
             string[] strs = System.IO.File.ReadAllLines("games.txt");
@@ -181,8 +182,40 @@ namespace ShopGames
 
         private void AuthButton_Click(object sender, EventArgs e)
         {
-            AuthForm authForm = new AuthForm();
-            authForm.ShowDialog();
+            if (AuthButton.Text == "Войти")
+            {
+                AuthForm authForm = new AuthForm();
+                authForm.ShowDialog();
+                if (AuthForm.login != "")
+                { 
+                    NameLabel.Text = "Вы авторизовались как " + AuthForm.name + " " + AuthForm.family;
+                    NameLabel.Visible = true;
+                    AuthButton.Text = "Выйти";                
+                }
+
+            }
+            else 
+            {
+                NameLabel.Text = "";
+                NameLabel.Visible = false;
+                AuthButton.Text = "Войти";
+                AuthForm.name = "";
+                AuthForm.family = "";
+                AuthForm.login = "";
+            }
+        }
+
+        private void AddToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (AuthForm.isAdmin)
+            {
+                AddForm add = new AddForm();
+                add.ShowDialog();
+            }
+            else 
+            {
+                MessageBox.Show("Добавлять объекты может только администратор");
+            }
         }
     }
 }
