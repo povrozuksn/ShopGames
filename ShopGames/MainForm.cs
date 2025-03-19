@@ -192,10 +192,10 @@ namespace ShopGames
                     NameLabel.Visible = true;
                     AuthButton.Text = "Выйти";                
                 }
-
             }
             else 
             {
+                AuthForm.isAdmin = false;
                 NameLabel.Text = "";
                 NameLabel.Visible = false;
                 AuthButton.Text = "Войти";
