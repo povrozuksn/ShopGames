@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +22,8 @@ namespace ShopGames
             PersPictureBox.Image = game.pb.Image; 
             StyleLabel.Text = "Жанр игры: " + game.style;
             PriceLabel.Text = "Цена игры, руб. " + game.price;
+
+            DeskTextBox.Text = File.ReadAllText("../../Pictures/" + game.name + ".txt");
         }
     }
 }

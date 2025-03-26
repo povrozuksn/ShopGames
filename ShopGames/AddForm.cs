@@ -35,6 +35,13 @@ namespace ShopGames
                 MessageBox.Show("Все поля обязательны для заполнения");
                 return;
             }
+            
+            int a;
+            if(!Int32.TryParse(priceTextBox.Text, out a))
+            {
+                MessageBox.Show("Внимание! Введенное значение цены не числовое");
+                return;
+            }
 
             File.AppendAllText("games.txt", nameTextBox.Text + ", " + 
                                             styleComboBox.Text + ", " + 
@@ -46,6 +53,11 @@ namespace ShopGames
             {
                 File.Copy(fileName, "../../Pictures/" + nameTextBox.Text + ".jpg");
             }
+
+            File.AppendAllText("../../Pictures/" + nameTextBox.Text + ".txt", OpisTextBox.Text);
+
+            MessageBox.Show("Объект добавлен");
+            Close();
         }
     }
 }

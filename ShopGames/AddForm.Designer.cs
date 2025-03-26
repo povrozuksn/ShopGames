@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.OpisTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,11 +155,21 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // OpisTextBox
+            // 
+            this.OpisTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OpisTextBox.Location = new System.Drawing.Point(765, 34);
+            this.OpisTextBox.Multiline = true;
+            this.OpisTextBox.Name = "OpisTextBox";
+            this.OpisTextBox.Size = new System.Drawing.Size(357, 372);
+            this.OpisTextBox.TabIndex = 11;
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 443);
+            this.ClientSize = new System.Drawing.Size(1142, 443);
+            this.Controls.Add(this.OpisTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -194,5 +205,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox OpisTextBox;
     }
 }
