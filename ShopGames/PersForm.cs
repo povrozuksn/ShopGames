@@ -13,17 +13,37 @@ namespace ShopGames
 {
     public partial class PersForm : Form
     {
-        public PersForm(Game game)
+        Game game;
+        public PersForm(Game _game)
         {
             InitializeComponent();
 
-            Text = game.name;
+            game = _game;
+
+            if (AuthForm.login == "")
+            {
+                AddSelectButton.Visible = false;
+            }
+            else
+            {
+                AddSelectButton.Visible = true;
+            }
+
+                Text = game.name;
             NameLabel.Text = "Название игры: " + game.name;
             PersPictureBox.Image = game.pb.Image; 
             StyleLabel.Text = "Жанр игры: " + game.style;
             PriceLabel.Text = "Цена игры, руб. " + game.price;
+            try
+            {
+                DeskTextBox.Text = File.ReadAllText("../../Pictures/" + game.name + ".txt");
+            }
+            catch (Exception) { }
+        }
 
-            DeskTextBox.Text = File.ReadAllText("../../Pictures/" + game.name + ".txt");
+        private void AddSelectButton_Click(object sender, EventArgs e)
+        {
+            SelectedForm.selected_games.Add(game);
         }
     }
 }

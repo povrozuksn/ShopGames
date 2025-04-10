@@ -42,46 +42,14 @@ namespace ShopGames
 
     public partial class MainForm : Form
     {
-        List<Game> game_list = new List<Game>();
+        public static List<Game> game_list = new List<Game>();
         public MainForm()
         {
             InitializeComponent();
             FiltrPanel.Height = HideButton.Height;
             NameLabel.Visible = false;
-
-            game_list.Clear();
-            string[] strs = System.IO.File.ReadAllLines("games.txt");
-            foreach (string str in strs)
-            {
-                string[] parts = str.Split(new string[] {", "}, StringSplitOptions.None);
-                Game game = new Game(parts[0], parts[1], parts[2], Convert.ToInt32(parts[3]));
-                game_list.Add(game);
-            }
-
-            int x = 30;
-            int y = 30;
-
-            for (int i = 0; i < game_list.Count; i++)
-            {
-                game_list[i].pb.Location = new Point(x, y);
-                game_list[i].pb.Size = new Size(250, 243);
-                game_list[i].pb.SizeMode = PictureBoxSizeMode.Zoom;
-                game_list[i].pb.Tag = game_list[i].name;
-                game_list[i].pb.Click += new EventHandler(picture_Click);
-                InfoPanel.Controls.Add(game_list[i].pb);
-
-                game_list[i].lbl.Location = new Point(x, y+260);
-                game_list[i].lbl.Size = new Size(250, 25);
-                game_list[i].lbl.TextAlign = ContentAlignment.MiddleCenter;
-                InfoPanel.Controls.Add(game_list[i].lbl);
-
-                x += 300;
-                if (x+250 > InfoPanel.Width)
-                {
-                    x = 30;
-                    y += 300;
-                }
-            }
+            adminManualButton.Visible = false;
+            SelectedButton.Visible = false;
         }
 
         private void HideButton_Click(object sender, EventArgs e)
@@ -190,6 +158,8 @@ namespace ShopGames
                 { 
                     NameLabel.Text = "Вы авторизовались как " + AuthForm.name + " " + AuthForm.family;
                     NameLabel.Visible = true;
+                    adminManualButton.Visible = (AuthForm.isAdmin == true);
+                    SelectedButton.Visible = true;
                     AuthButton.Text = "Выйти";                
                 }
             }
@@ -198,6 +168,8 @@ namespace ShopGames
                 AuthForm.isAdmin = false;
                 NameLabel.Text = "";
                 NameLabel.Visible = false;
+                adminManualButton.Visible= false;
+                SelectedButton.Visible = false;
                 AuthButton.Text = "Войти";
                 AuthForm.name = "";
                 AuthForm.family = "";
@@ -211,11 +183,77 @@ namespace ShopGames
             {
                 AddForm add = new AddForm();
                 add.ShowDialog();
+                MainForm_Load(null, null);
             }
             else 
             {
                 MessageBox.Show("Добавлять объекты может только администратор");
             }
+        }
+
+        private void DelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (AuthForm.isAdmin)
+            {
+                DelForm del = new DelForm();
+                del.ShowDialog();
+                MainForm_Load(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Удалять объекты может только администратор");
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            game_list.Clear();
+            string[] strs = System.IO.File.ReadAllLines("games.txt");
+            foreach (string str in strs)
+            {
+                string[] parts = str.Split(new string[] { ", " }, StringSplitOptions.None);
+                Game game = new Game(parts[0], parts[1], parts[2], Convert.ToInt32(parts[3]));
+                game_list.Add(game);
+            }
+
+            int x = 30;
+            int y = 30;
+            InfoPanel.Controls.Clear();
+
+            for (int i = 0; i < game_list.Count; i++)
+            {
+                game_list[i].pb.Location = new Point(x, y);
+                game_list[i].pb.Size = new Size(250, 243);
+                game_list[i].pb.SizeMode = PictureBoxSizeMode.Zoom;
+                game_list[i].pb.Tag = game_list[i].name;
+                game_list[i].pb.Click += new EventHandler(picture_Click);
+                InfoPanel.Controls.Add(game_list[i].pb);
+
+                game_list[i].lbl.Location = new Point(x, y + 260);
+                game_list[i].lbl.Size = new Size(250, 25);
+                game_list[i].lbl.TextAlign = ContentAlignment.MiddleCenter;
+                InfoPanel.Controls.Add(game_list[i].lbl);
+
+                x += 300;
+                if (x + 250 > InfoPanel.Width)
+                {
+                    x = 30;
+                    y += 300;
+                }
+            }
+
+        }
+
+        private void adminManualButton_Click(object sender, EventArgs e)
+        {
+            ManualForm form = new ManualForm();
+            form.Show();
+        }
+
+        private void SelectedButton_Click(object sender, EventArgs e)
+        {
+            SelectedForm form = new SelectedForm();
+            form.ShowDialog();
         }
     }
 }

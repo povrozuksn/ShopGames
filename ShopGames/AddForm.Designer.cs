@@ -41,6 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.OpisTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             "Ролевая игра",
             "Песочница",
             "Экшен"});
-            this.styleComboBox.Location = new System.Drawing.Point(28, 130);
+            this.styleComboBox.Location = new System.Drawing.Point(28, 139);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(323, 33);
             this.styleComboBox.TabIndex = 1;
@@ -73,14 +74,14 @@
             "однопользовательский",
             "многопользовательский",
             "комбинированный"});
-            this.modeComboBox.Location = new System.Drawing.Point(28, 206);
+            this.modeComboBox.Location = new System.Drawing.Point(30, 205);
             this.modeComboBox.Name = "modeComboBox";
             this.modeComboBox.Size = new System.Drawing.Size(321, 33);
             this.modeComboBox.TabIndex = 2;
             // 
             // priceTextBox
             // 
-            this.priceTextBox.Location = new System.Drawing.Point(27, 291);
+            this.priceTextBox.Location = new System.Drawing.Point(29, 284);
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.Size = new System.Drawing.Size(322, 30);
             this.priceTextBox.TabIndex = 3;
@@ -107,9 +108,9 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(27, 351);
+            this.addButton.Location = new System.Drawing.Point(765, 351);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(322, 55);
+            this.addButton.Size = new System.Drawing.Size(357, 55);
             this.addButton.TabIndex = 6;
             this.addButton.Text = "Добавить";
             this.addButton.UseVisualStyleBackColor = true;
@@ -127,7 +128,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 102);
+            this.label2.Location = new System.Drawing.Point(26, 111);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(159, 25);
             this.label2.TabIndex = 8;
@@ -136,7 +137,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 178);
+            this.label3.Location = new System.Drawing.Point(27, 177);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(177, 25);
             this.label3.TabIndex = 9;
@@ -145,7 +146,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 263);
+            this.label4.Location = new System.Drawing.Point(27, 256);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(185, 25);
             this.label4.TabIndex = 10;
@@ -161,14 +162,26 @@
             this.OpisTextBox.Location = new System.Drawing.Point(765, 34);
             this.OpisTextBox.Multiline = true;
             this.OpisTextBox.Name = "OpisTextBox";
-            this.OpisTextBox.Size = new System.Drawing.Size(357, 372);
+            this.OpisTextBox.Size = new System.Drawing.Size(357, 300);
             this.OpisTextBox.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(31, 351);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(320, 18);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Все поля обазательны для заполнения";
             // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 443);
+            this.ClientSize = new System.Drawing.Size(1142, 422);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.OpisTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -206,5 +219,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox OpisTextBox;
+        private System.Windows.Forms.Label label5;
     }
 }
