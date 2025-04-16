@@ -12,7 +12,8 @@ namespace ShopGames
 {
     public partial class SelectedForm : Form
     {
-        public static List<Game> selected_games = new List<Game>();
+        //public static List<Game> selected_games = new List<Game>();
+        public static Dictionary<Game, int> selected_games = new Dictionary<Game, int>();
 
         public SelectedForm()
         {
@@ -21,14 +22,16 @@ namespace ShopGames
 
             int x = 20;
             int y = 50;
-            for(int i=0; i<selected_games.Count; i++)
+            foreach(KeyValuePair<Game, int> selected_game in selected_games)
             {
+                Game game = selected_game.Key;
+                
                 #region 1 столбец (Обложка)
                 PictureBox pic = new PictureBox();
                 pic.Location = new Point(x, y);
                 pic.Size = new Size(200, 200);
                 pic.SizeMode = PictureBoxSizeMode.Zoom;
-                pic.Image = selected_games[i].pb.Image;
+                pic.Image = game.pb.Image;
                 Controls.Add(pic);
                 #endregion
 
@@ -37,19 +40,19 @@ namespace ShopGames
                 name_label.Location = new Point(x+250, y);
                 name_label.Size = new Size(300, 20);
                 name_label.BorderStyle = BorderStyle.Fixed3D;
-                name_label.Text = "Название: " + selected_games[i].name;
+                name_label.Text = "Название: " + game.name;
                 Controls.Add(name_label);
 
                 Label style_label = new Label();
                 style_label.Location = new Point(x+250, y+30);
                 style_label.Size = new Size(300, 20);
-                style_label.Text = "Жанр: " + selected_games[i].style;
+                style_label.Text = "Жанр: " + game.style;
                 Controls.Add(style_label);
 
                 Label mode_label = new Label();
                 mode_label.Location = new Point(x + 250, y + 60);
                 mode_label.Size = new Size(300, 20);
-                mode_label.Text = "Режим: " + selected_games[i].mode;
+                mode_label.Text = "Режим: " + game.mode;
                 Controls.Add(mode_label);
                 #endregion
 
@@ -57,8 +60,22 @@ namespace ShopGames
                 Label price_label = new Label();
                 price_label.Location = new Point(x + 650, y);
                 price_label.Size = new Size(150, 20);
-                price_label.Text = "Цена: " + selected_games[i].price.ToString();
+                price_label.Text = "Цена: " + game.price.ToString();
                 Controls.Add(price_label);
+
+                Label count_label = new Label();
+                count_label.Location = new Point(x + 650, y + 30);
+                count_label.Size = new Size(150, 20);
+                count_label.Text = "Количество: ";
+                Controls.Add(count_label);
+
+                NumericUpDown count = new NumericUpDown();
+                count.Location = new Point(x + 650, y + 50);
+                count.Size = new Size(150, 30);
+                count.Value = selected_game.Value;
+                count.ValueChanged += new EventHandler(CountCanged);
+                Controls.Add(count);
+
                 #endregion
 
                 #region 4 столбец (Кнопка удаления)
@@ -71,6 +88,11 @@ namespace ShopGames
 
                 y += 250;
             }
+        }
+
+        private void CountCanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

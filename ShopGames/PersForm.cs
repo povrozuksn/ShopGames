@@ -43,7 +43,14 @@ namespace ShopGames
 
         private void AddSelectButton_Click(object sender, EventArgs e)
         {
-            SelectedForm.selected_games.Add(game);
+            if (SelectedForm.selected_games.ContainsKey(game))
+            {
+                SelectedForm.selected_games[game]++;
+            }
+            else
+            {
+                SelectedForm.selected_games.Add(game, 1);
+            }
         }
     }
 }
